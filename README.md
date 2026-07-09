@@ -15,8 +15,6 @@
 
 ---
 
-![demo](docs/assets/demo.png)
-
 ## Por que este projeto existe
 
 A grande maioria das bibliotecas de validação de CPF/CNPJ no ecossistema Python e JavaScript brasileiro faz uma única coisa: confere o dígito verificador matemático e devolve `True` ou `False`. Isso resolve um problema de 2015 — não o de uma empresa que precisa, hoje, limpar uma planilha de 50 mil clientes com documentos mal formatados, saber quais CNPJs seguem ativos na Receita Federal, ou já validar o novo formato **alfanumérico** que entrou em produção em julho de 2026.
@@ -78,25 +76,20 @@ validate_cnpj("06.990.590/0001-23")   # True — suporta formato numérico e alf
 docbr validate "06.990.590/0001-23" --enrich
 ```
 
-```
-┌─────────────────────────── Resultado ───────────────────────────┐
-│ Documento       06.990.590/0001-23                               │
-│ Tipo            CNPJ (numérico)                                  │
-│ Status          ✅ Válido                                        │
-│ Razão Social    GOOGLE BRASIL INTERNET LTDA.                     │
-│ Situação        Ativa                                            │
-│ CNAE Principal  6319-4/00 - Portais, provedores de conteúdo...   │
-└────────────────────────────────────────────────────────────────┘
-```
-
-![gerador cpf](docs/assets/gerador.png)
+![Validação e Enriquecimento](docs/assets/demo.png)
 
 ```bash
+docbr generate cpf --region 8
 docbr generate cnpj --alphanumeric
+```
+
+![Gerador de Documentos](docs/assets/gerador.png)
+
+```bash
 docbr process base_clientes.csv --enrich
 ```
 
-![batch processing](docs/assets/batch.png)
+![Processamento em Lote](docs/assets/batch.png)
 
 ## Referência de CLI
 
