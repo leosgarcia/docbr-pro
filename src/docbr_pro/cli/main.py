@@ -132,5 +132,20 @@ def process(
     console.print(f"- Inválidos: [bold red]{n_invalid}[/bold red]")
     console.print(f"Arquivos salvos em: [bold]{output.absolute()}[/bold]")
 
+@app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", help="Host para a API"),
+    port: int = typer.Option(8000, help="Porta para a API"),
+) -> None:
+    """Inicia o servidor da API REST do docbr-pro."""
+    try:
+        import uvicorn
+        console.print(f"[green]Iniciando servidor em http://{host}:{port}...[/green]")
+        uvicorn.run("docbr_pro.api.main:app", host=host, port=port, reload=False)
+    except ImportError:
+        console.print("[red]Erro:[/red] uvicorn ou fastapi não instalados.")
+        raise typer.Exit(1)
+
+
 if __name__ == "__main__":
     app()

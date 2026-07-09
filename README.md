@@ -156,3 +156,16 @@ DistribuÃ­do sob a licenÃ§a MIT. Veja [`LICENSE`](LICENSE) para o texto completo
 <div align="center">
   <a href="https://buymeacoffee.com/leosgarcia" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 </div>
+
+## ?? Como API REST (Novo!)
+A partir da versão 0.1.0, o docbr-pro acompanha um servidor nativo escrito em **FastAPI**.
+Você pode iniciar o servidor utilizando o comando CLI:
+``bash
+docbr serve --port 8000
+``
+Isso disponibilizará os seguintes endpoints de alta performance:
+- GET /validate/{document}: Valida qualquer CPF ou CNPJ.
+- GET /generate/cpf: Gera um CPF válido.
+- GET /generate/cnpj: Gera um CNPJ válido.
+
+A documentação interativa (Swagger UI) ficará disponível automaticamente em http://127.0.0.1:8000/docs.
