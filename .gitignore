@@ -69,3 +69,6 @@ venv.bak/
 # Project specific
 docbr_cache.sqlite
 .ruff_cache/
+
+# Arquivos auxiliares do VHS
+vhs_bin/
