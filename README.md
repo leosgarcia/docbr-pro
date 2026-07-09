@@ -15,8 +15,7 @@
 
 ---
 
-![demo](docs/assets/demo.gif)
-> *Grave uma demonstração real do terminal com [`vhs`](https://github.com/charmbracelet/vhs) ou [`asciinema`](https://asciinema.org/) e substitua este placeholder antes do primeiro release público.*
+![demo](docs/assets/demo.png)
 
 ## Por que este projeto existe
 
@@ -90,11 +89,14 @@ docbr validate "06.990.590/0001-23" --enrich
 └────────────────────────────────────────────────────────────────┘
 ```
 
+![gerador cpf](docs/assets/gerador.png)
+
 ```bash
-docbr generate cpf --region 8
 docbr generate cnpj --alphanumeric
 docbr process base_clientes.csv --enrich
 ```
+
+![batch processing](docs/assets/batch.png)
 
 ## Referência de CLI
 
