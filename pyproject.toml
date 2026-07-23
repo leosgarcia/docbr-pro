@@ -2,7 +2,6 @@
 name = "docbr-pro"
 version = "0.1.0"
 description = "A única ferramenta que valida, corrige, enriquece e processa CPF/CNPJ em massa — do terminal ou como biblioteca."
-readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Leo Garcia", email = "leosg@example.com" }]
 dependencies = [
