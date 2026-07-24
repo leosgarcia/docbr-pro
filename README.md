@@ -2,7 +2,7 @@
 
 # docbr-pro
 
-**A Ãºnica ferramenta que valida, corrige, enriquece e processa CPF/CNPJ em massa â€” do terminal ou como biblioteca.**
+**A única ferramenta que valida, corrige, enriquece e processa CPF/CNPJ em massa - do terminal ou como biblioteca.**
 
 [![CI](https://img.shields.io/github/actions/workflow/status/leosgarcia/docbr-pro/ci.yml?branch=main&label=build)](https://github.com/leosgarcia/docbr-pro/actions)
 [![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](#testes-e-qualidade)
@@ -17,31 +17,31 @@
 
 ## Por que este projeto existe
 
-A grande maioria das bibliotecas de validaÃ§Ã£o de CPF/CNPJ no ecossistema Python e JavaScript brasileiro faz uma Ãºnica coisa: confere o dÃ­gito verificador matemÃ¡tico e devolve `True` ou `False`. Isso resolve um problema de 2015 â€” nÃ£o o de uma empresa que precisa, hoje, limpar uma planilha de 50 mil clientes com documentos mal formatados, saber quais CNPJs seguem ativos na Receita Federal, ou jÃ¡ validar o novo formato **alfanumÃ©rico** que entrou em produÃ§Ã£o em julho de 2026.
+A grande maioria das bibliotecas de validação de CPF/CNPJ no ecossistema Python e JavaScript brasileiro faz uma única coisa: confere o dígito verificador matemático e devolve `True` ou `False`. Isso resolve um problema de 2015 - não o de uma empresa que precisa, hoje, limpar uma planilha de 50 mil clientes com documentos mal formatados, saber quais CNPJs seguem ativos na Receita Federal, ou já validar o novo formato **alfanumérico** que entrou em produção em julho de 2026.
 
-`docbr-pro` nasceu para cobrir essa distÃ¢ncia:
+`docbr-pro` nasceu para cobrir essa distância:
 
 | | Bibliotecas tradicionais (ex. `validate-docbr`) | `docbr-pro` |
 |---|---|---|
-| ValidaÃ§Ã£o de dÃ­gito verificador | âœ… | âœ… |
-| CNPJ alfanumÃ©rico (formato 2026) | â�Œ | âœ… |
-| CorreÃ§Ã£o automÃ¡tica de input sujo (fuzzy fixing) | â�Œ | âœ… |
-| DetecÃ§Ã£o de regiÃ£o fiscal do CPF | â�Œ | âœ… |
-| Enriquecimento de dados via BrasilAPI (razÃ£o social, situaÃ§Ã£o cadastral, CNAE) | â�Œ | âœ… |
-| Processamento em massa de CSV/XLSX com relatÃ³rio de erros | â�Œ | âœ… |
-| Interface de terminal rica (tabelas, progresso, cores semÃ¢nticas) | â�Œ | âœ… |
-| Uso como biblioteca **e** como CLI | parcial | âœ… |
+| Validação de dígito verificador | ✅ | ✅ |
+| CNPJ alfanumérico (formato 2026) | ❌ | ✅ |
+| Correção automática de input sujo (fuzzy fixing) | ❌ | ✅ |
+| Detecção de região fiscal do CPF | ❌ | ✅ |
+| Enriquecimento de dados via BrasilAPI (razão social, situação cadastral, CNAE) | ❌ | ✅ |
+| Processamento em massa de CSV/XLSX com relatório de erros | ❌ | ✅ |
+| Interface de terminal rica (tabelas, progresso, cores semânticas) | ❌ | ✅ |
+| Uso como biblioteca **e** como CLI | parcial | ✅ |
 
 ## Funcionalidades
 
-- âœ… **ValidaÃ§Ã£o** â€” CPF e CNPJ, incluindo o novo formato alfanumÃ©rico (mÃ³dulo 11 com conversÃ£o ASCII).
-- âœ… **GeraÃ§Ã£o** â€” documentos vÃ¡lidos para testes, com CPF contextual por regiÃ£o fiscal e CNPJ no formato numÃ©rico ou alfanumÃ©rico.
-- âœ… **Fuzzy fixing** â€” reconstitui zeros Ã  esquerda perdidos em exportaÃ§Ãµes de Excel e normaliza ruÃ­do comum de input humano.
-- âœ… **Enriquecimento (OSINT)** â€” consulta assÃ­ncrona Ã  BrasilAPI para razÃ£o social, situaÃ§Ã£o cadastral e CNAE de CNPJs vÃ¡lidos, com cache local em SQLite.
-- âœ… **Processamento em massa** â€” pipeline completo sobre CSV/XLSX: sanitiza, valida, enriquece e exporta relatÃ³rios separados de vÃ¡lidos e invÃ¡lidos.
-- âœ… **CLI rica** â€” construÃ­da com `Typer` e `Rich`: tabelas, barras de progresso e saÃ­da colorida por padrÃ£o.
+- ✅ **Validação** - CPF e CNPJ, incluindo o novo formato alfanumérico (módulo 11 com conversão ASCII).
+- ✅ **Geração** - documentos válidos para testes, com CPF contextual por região fiscal e CNPJ no formato numérico ou alfanumérico.
+- ✅ **Fuzzy fixing** - reconstitui zeros à esquerda perdidos em exportações de Excel e normaliza ruído comum de input humano.
+- ✅ **Enriquecimento (OSINT)** - consulta assíncrona à BrasilAPI para razão social, situação cadastral e CNAE de CNPJs válidos, com cache local em SQLite.
+- ✅ **Processamento em massa** - pipeline completo sobre CSV/XLSX: sanitiza, valida, enriquece e exporta relatórios separados de válidos e inválidos.
+- ✅ **CLI rica** - construída com `Typer` e `Rich`: tabelas, barras de progresso e saída colorida por padrão.
 
-## InstalaÃ§Ã£o
+## Instalação
 
 Como biblioteca, em qualquer projeto Python 3.11+:
 
@@ -67,7 +67,7 @@ from docbr_pro.core.cnpj import validate_cnpj
 
 validate_cpf("529.982.247-25")        # True
 get_fiscal_region("529.982.247-25")   # "SP"
-validate_cnpj("06.990.590/0001-23")   # True â€” suporta formato numÃ©rico e alfanumÃ©rico
+validate_cnpj("06.990.590/0001-23")   # True - suporta formato numérico e alfanumérico
 ```
 
 ### Como CLI
@@ -76,7 +76,7 @@ validate_cnpj("06.990.590/0001-23")   # True â€” suporta formato numÃ©ric
 docbr validate "06.990.590/0001-23" --enrich
 ```
 
-![ValidaÃ§Ã£o e Enriquecimento](docs/assets/demo.png)
+![Validação e Enriquecimento](docs/assets/demo.png)
 
 ```bash
 docbr generate cpf --region 8
@@ -91,38 +91,38 @@ docbr process base_clientes.csv --enrich
 
 ![Processamento em Lote](docs/assets/batch.png)
 
-## ReferÃªncia de CLI
+## Referência de CLI
 
-| Comando | DescriÃ§Ã£o | Flags principais |
+| Comando | Descrição | Flags principais |
 |---|---|---|
 | `docbr validate <documento>` | Valida um CPF ou CNPJ pontual | `--enrich` (consulta BrasilAPI para CNPJ) |
-| `docbr generate cpf` | Gera um CPF vÃ¡lido | `--region <cÃ³digo>` (regiÃ£o fiscal de emissÃ£o) |
-| `docbr generate cnpj` | Gera um CNPJ vÃ¡lido | `--alphanumeric` (formato 2026) |
+| `docbr generate cpf` | Gera um CPF válido | `--region <código>` (região fiscal de emissão) |
+| `docbr generate cnpj` | Gera um CNPJ válido | `--alphanumeric` (formato 2026) |
 | `docbr process <arquivo.csv\|.xlsx>` | Executa o pipeline completo em massa | `--enrich`, `--column <nome>` |
 
-Execute `docbr --help` ou `docbr <comando> --help` para a lista completa de opÃ§Ãµes.
+Execute `docbr --help` ou `docbr <comando> --help` para a lista completa de opções.
 
 ## Arquitetura
 
-O projeto Ã© organizado em camadas com regra de dependÃªncia estrita: `core` Ã© domÃ­nio puro (sem I/O, sem rede) e nÃ£o depende de nenhuma outra camada â€” isso Ã© o que permite reaproveitar toda a regra de negÃ³cio numa futura API HTTP sem reescrever nada.
+O projeto é organizado em camadas com regra de dependência estrita: `core` é domínio puro (sem I/O, sem rede) e não depende de nenhuma outra camada - isso é o que permite reaproveitar toda a regra de negócio numa futura API HTTP sem reescrever nada.
 
 ```mermaid
 graph TD
-    CLI["cli â€” Typer + Rich"] --> CORE["core â€” validaÃ§Ã£o, geraÃ§Ã£o, sanitizaÃ§Ã£o"]
-    CLI --> BATCH["batch â€” pipeline CSV/XLSX"]
+    CLI["cli - Typer + Rich"] --> CORE["core - validação, geração, sanitização"]
+    CLI --> BATCH["batch - pipeline CSV/XLSX"]
     BATCH --> CORE
-    BATCH --> ENRICH["enrichment â€” BrasilAPI + cache SQLite"]
+    BATCH --> ENRICH["enrichment - BrasilAPI + cache SQLite"]
     ENRICH --> CORE
-    API["api (planejado) â€” FastAPI"] -.-> CORE
+    API["api (planejado) - FastAPI"] -.-> CORE
     API -.-> ENRICH
 ```
 
 ## Testes e qualidade
 
-- **Tipagem estÃ¡tica:** `mypy --strict` sem ressalvas em toda a base.
-- **Lint e formataÃ§Ã£o:** `ruff`.
-- **Cobertura:** ~90% nos pipelines assÃ­ncronos e 100% nos validadores do `core`, incluindo testes baseados em propriedades com `hypothesis` (round-trip: todo documento gerado pela ferramenta Ã© validado como vÃ¡lido pela prÃ³pria ferramenta).
-- **Gerenciamento de dependÃªncias:** `uv`.
+- **Tipagem estática:** `mypy --strict` sem ressalvas em toda a base.
+- **Lint e formatação:** `ruff`.
+- **Cobertura:** ~90% nos pipelines assíncronos e 100% nos validadores do `core`, incluindo testes baseados em propriedades com `hypothesis` (round-trip: todo documento gerado pela ferramenta é validado como válido pela própria ferramenta).
+- **Gerenciamento de dependências:** `uv`.
 
 ```bash
 uv run pytest --cov
@@ -136,7 +136,7 @@ uv run ruff check .
 - [x] Fuzzy fixing e sanitização de input
 - [x] Enriquecimento via BrasilAPI com cache SQLite
 - [x] Processamento em massa (CSV/XLSX) via CLI
-- [ ] **API REST paga (em breve)** — mesma camada `core` exposta via FastAPI, com autenticação, rate limiting e planos de uso
+- [ ] **API REST paga (em breve)** - mesma camada `core` exposta via FastAPI, com autenticação, rate limiting e planos de uso
 - [ ] SDKs oficiais em outras linguagens consumindo a futura API
 - [ ] Suporte a XLSX com múltiplas planilhas no mesmo arquivo
 
@@ -162,7 +162,7 @@ Contribuições são bem-vindas. Veja [`CONTRIBUTING.md`](CONTRIBUTING.md) para 
 
 ## Aviso legal
 
-`docbr-pro` valida **formato e dígitos verificadores** de CPF e CNPJ segundo os algoritmos públicos definidos pela Receita Federal do Brasil (incluindo a Instrução Normativa RFB nº 2.229/2024 para o formato alfanumérico). O enriquecimento de CNPJ consulta exclusivamente a [BrasilAPI](https://brasilapi.com.br/), fonte pública que agrega dados oficiais e abertos da Receita Federal — nenhum dado pessoal sensível é armazenado, revendido ou exposto pela ferramenta. Não existe, nem é objetivo deste projeto, qualquer forma de consulta a dados pessoais de CPF além do cálculo público da região fiscal de emissão.
+`docbr-pro` valida **formato e dígitos verificadores** de CPF e CNPJ segundo os algoritmos públicos definidos pela Receita Federal do Brasil (incluindo a Instrução Normativa RFB nº 2.229/2024 para o formato alfanumérico). O enriquecimento de CNPJ consulta exclusivamente a [BrasilAPI](https://brasilapi.com.br/), fonte pública que agrega dados oficiais e abertos da Receita Federal - nenhum dado pessoal sensível é armazenado, revendido ou exposto pela ferramenta. Não existe, nem é objetivo deste projeto, qualquer forma de consulta a dados pessoais de CPF além do cálculo público da região fiscal de emissão.
 
 ## Licença
 
